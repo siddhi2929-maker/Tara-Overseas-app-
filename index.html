@@ -1,1 +1,190 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0d6efd">
+
+  <title>Tara Overseas App</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #f4f6f8;
+      color: #222;
+    }
+
+    header {
+      background: #0d6efd;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 25px;
+    }
+
+    header p {
+      margin: 6px 0 0;
+      font-size: 14px;
+    }
+
+    .container {
+      padding: 15px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 13px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #0d6efd;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    .result {
+      font-size: 22px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .menu button {
+      margin-top: 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Tara Overseas</h1>
+  <p>Business Management App</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>📊 Profit / Loss Calculator</h2>
+
+    <label>Sales Amount (₹)</label>
+    <input type="number" id="sales" placeholder="Enter sales">
+
+    <label>Purchase Cost (₹)</label>
+    <input type="number" id="purchase" placeholder="Enter purchase cost">
+
+    <label>Other Expenses (₹)</label>
+    <input type="number" id="expenses" placeholder="Enter expenses">
+
+    <button onclick="calculate()">Calculate Profit / Loss</button>
+
+    <div class="result" id="result">
+      Enter details above
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📋 Quick Menu</h2>
+
+    <div class="menu">
+      <button onclick="showMessage('Sales Entry')">Sales</button>
+      <button onclick="showMessage('Purchase Entry')">Purchase</button>
+      <button onclick="showMessage('Expenses')">Expenses</button>
+      <button onclick="showMessage('Reports')">Reports</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🏢 Company</h2>
+    <p><b>Tara Overseas</b></p>
+    <p>Business Management System</p>
+  </div>
+
+</div>
+
+<footer>
+  Tara Overseas App © 2026
+</footer>
+
+<script>
+  function calculate() {
+    let sales = Number(document.getElementById("sales").value) || 0;
+    let purchase = Number(document.getElementById("purchase").value) || 0;
+    let expenses = Number(document.getElementById("expenses").value) || 0;
+
+    let profit = sales - purchase - expenses;
+
+    if (profit >= 0) {
+      document.getElementById("result").innerHTML =
+        "Profit: ₹" + profit.toLocaleString("en-IN");
+    } else {
+      document.getElementById("result").innerHTML =
+        "Loss: ₹" + Math.abs(profit).toLocaleString("en-IN");
+    }
+  }
+
+  function showMessage(name) {
+    alert(name + " section will be added next.");
+  }
+</script>
+
+</body>
+</html>
